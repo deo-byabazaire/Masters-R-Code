@@ -24,17 +24,6 @@ df <- read.csv("Data/Deos_file.csv", header = TRUE)
 case_control <- read.csv("Data/preex_pcos.tsv", header = TRUE, sep = '')
 SweMaMi_24FEB23 <- read_excel("Data/SweMaMi_24FEB23.xlsx")
 data_bracken <- read.table("Data/all_samples.bracken.mpa_style.txt", header = TRUE, sep = "\t")
-filtered_bracken <- data_bracken[grep("s__", data_bracken$taxon_name), ]
-data_kraken <- read.table("Data/all_samples.kraken2.mpa_style.txt", header = TRUE, sep = "\t")
-filtered_kraken <- data_kraken[grep("s__", data_kraken$taxon_name), ]
-# Row data
-dim(data_bracken) # 925  89
-dim(data_kraken) # 1328   89
-
-# Print the filtered rows
-dim(filtered_bracken) # 515  89
-dim(filtered_kraken) # 759  89
-view(filtered_kraken)
 
 # Obtaining the taxon data and meta data
 df_meta <- df[, c(2:11, 322:379)]
