@@ -23,7 +23,6 @@ library(DT)
 df <- read.csv("Data/Deos_file.csv", header = TRUE)
 case_control <- read.csv("Data/preex_pcos.tsv", header = TRUE, sep = '')
 SweMaMi_24FEB23 <- read_excel("Data/SweMaMi_24FEB23.xlsx")
-data_bracken <- read.table("Data/all_samples.bracken.mpa_style.txt", header = TRUE, sep = "\t")
 
 # Obtaining the taxon data and meta data
 df_meta <- df[, c(2:11, 322:379)]
