@@ -1,5 +1,4 @@
 #*************** loading packages ******************
-setwd("G:/My Drive/UHasselt/Second Year/Semester Two/Master Thesis/Work/THESIS")
 library(microbiome)
 library(gridExtra)
 library(tidyverse)
