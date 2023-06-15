@@ -618,8 +618,15 @@ pheatmap(mat, annotation_row = taxa_clusters,
 #************Differential Abundance********************************
 #******************************************************************
 #*                   ANCOM-BC Differential Abundance 
-PCOS.abc2 <- ancombc2(data = df_phyloseq5, assay_name = "counts", 
+PCOS.abc <- ancombc2(data = df_phyloseq5, assay_name = "counts", 
                       fix_formula  = "PCOS", tax_level = "Species",
+                      p_adj_method = "BH",  prv_cut = 0,
+                      lib_cut = 0, group = "PCOS", 
+                      struc_zero = TRUE, neg_lb = TRUE, 
+                      em_control = list(tol = 1e-5, max_iter = 20),
+                      alpha = 0.05, global = TRUE)
+PCOS.abc2 <- ancombc2(data = df_phyloseq, assay_name = "counts", 
+                      fix_formula  = "PCOS + Subfertility_ + BMI_category",
                       p_adj_method = "BH",  prv_cut = 0,
                       lib_cut = 0, group = "PCOS", 
                       struc_zero = TRUE, neg_lb = TRUE, 
@@ -808,7 +815,7 @@ pheatmap(taxon1, annotation_row = taxa_clusters,
 
 #**********************************************************************
 #*                Box-plot of Shannon Diversity Vs subCSTs
-#*                
+#***********************************************************************                
 # Shannon Diversity Vs subCSTs
 rownames(cst_taxon1) <- cst_data$sampleID
 metaaa <- as.data.frame(cbind(df_metadata,cst_taxon1))
