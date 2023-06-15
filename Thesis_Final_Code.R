@@ -633,12 +633,13 @@ PCOS.abc2 <- ancombc2(data = df_phyloseq, assay_name = "counts",
                       em_control = list(tol = 1e-5, max_iter = 20),
                       alpha = 0.05, global = TRUE)
 results_ABC2 <- PCOS.abc2$res
-results_ABC3 <- data.frame(Species = rownames(results_ABC2),
+results_ABC4 <- data.frame(Species = rownames(results_ABC2),
                            lfc = results_ABC2$lfc_PCOSYes, 
                            se = results_ABC2$se_PCOSYes,
                            w = results_ABC2$W_PCOSYes,
-                           Adj.Pval.PCOS = results_ABC2$q_PCOSYes)
-xtable::xtable(results_ABC3, digits = 5)
+                           Adj.P.value = results_ABC2$q_PCOSYes)
+results_ANC1 <- results_ABC4 %>%  arrange(Adj.P.value) %>% head(7)
+xtable::xtable(results_ANC1, digits = 5)
 
 #****************************************************************************
 #*                   Wilcoxon Differential Abundance (Try other mtds)
@@ -909,7 +910,8 @@ results_ABC3 <- data.frame(Genera = rownames(results_ABC_genus),
                            w = results_ABC_genus$W_PCOSYes,
                            Adj.P.value = results_ABC_genus$q_PCOSYes)
 
-xtable::xtable(head(results_ABC3, 6), digits = 5)
+results_ANC2 <- results_ABC3 %>%  arrange(Adj.P.value) %>% head(7)
+xtable::xtable(results_ANC2, digits = 5)
 
 
 
