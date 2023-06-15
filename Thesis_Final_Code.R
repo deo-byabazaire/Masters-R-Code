@@ -151,10 +151,8 @@ library(table1)
 
 df2 <- df_metadata
 df2 <- df2 %>% mutate(Age_groups_2 = factor(Age_groups_2, levels = c(1,2,3,4,5), 
-                                            labels = c('<= 24', '25-29','30-34', 
-                                                       '35-39', '≥40')),
-                      Subfertility_ = factor(Subfertility_, levels = c(0, 1), 
-                                             labels = c("No", "Yes")))
+                                            labels = c('<= 24', '25-29','30-34','35-39', '≥40')),
+                      Subfertility_ = factor(Subfertility_, levels = c(0, 1), labels = c("No", "Yes")))
 
 # Set up template for tables
 rndr <- function(x, name, ...) {
@@ -472,8 +470,7 @@ ord_clr <- phyloseq::ordinate(df_phyloseq_clr, "RDA")
 clr1 <- ord_clr$CA$eig[1] / sum(ord_clr$CA$eig)
 clr2 <- ord_clr$CA$eig[2] / sum(ord_clr$CA$eig)
 
-P11 <- phyloseq::plot_ordination(df_phyloseq, ord_clr,
-                                 type = "samples", color="PCOS") + 
+P11 <- phyloseq::plot_ordination(df_phyloseq, ord_clr, type = "samples", color="PCOS") + 
       theme_bw() + theme_classic() +
       geom_point(size = 2) +
       coord_fixed(clr2 / clr1) +
