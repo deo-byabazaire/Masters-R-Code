@@ -213,13 +213,9 @@ hist(df_metadata$shannon2$diversity_shannon[df_metadata$PCOS == 'Yes'])
 hist(df_metadata$shannon2$diversity_shannon[df_metadata$PCOS == 'No'])
 
 # Homogeneity Test within the groups
-# We conduct the Bartlett’s test of homogeneity of variances
-bartlett.test(df_metadata$shannon2$diversity_shannon, df_metadata$PCOS) 
-# p-value = 0.2229
-
-# We now use Fligner-Killeen test to check the homoscedasticity. 
+bartlett.test(df_metadata$shannon2$diversity_shannon, df_metadata$PCOS)  
 fligner.test(df_metadata$shannon2$diversity_shannon, df_metadata$PCOS) 
-# p-value = 0.5046
+
 
 # Do-Wilcoxon of Alpha diversity in groups
 # Do-t.test of Alpha Diversity
@@ -235,6 +231,9 @@ wilcox.test(shannon2$diversity_shannon ~ parity, df_metadata)
 wilcox.test(shannon2$diversity_shannon ~ Subfertility_, df_metadata)
 aov(shannon2$diversity_shannon ~ Age_groups_2, df_metadata)
 aov(shannon2$diversity_shannon ~ BMI_category, df_metadata)
+
+mod <-lm(shannon2$diversity_shannon ~ PCOS+BMI_category+Gest_week, df_metadata) 
+summary(mod)
 
 #********************* Top Bacterial Species Analysis **********************
 #***************************************************************************
