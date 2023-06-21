@@ -231,6 +231,8 @@ wilcox.test(shannon2$diversity_shannon ~ parity, df_metadata)
 wilcox.test(shannon2$diversity_shannon ~ Subfertility_, df_metadata)
 aov(shannon2$diversity_shannon ~ Age_groups_2, df_metadata)
 aov(shannon2$diversity_shannon ~ BMI_category, df_metadata)
+kruskal.test(shannon2$diversity_shannon ~ Age_groups_2, df_metadata)
+kruskal.test(shannon2$diversity_shannon ~ BMI_category, df_metadata)
 
 mod <-lm(shannon2$diversity_shannon ~ PCOS+BMI_category+Gest_week, df_metadata) 
 summary(mod)
